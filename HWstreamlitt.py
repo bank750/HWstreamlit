@@ -12,13 +12,12 @@ import pydeck as pdk
 #set credit ,title and markdown
 st.text("Credit : Thanakrit Apichayanuntakul 6030809021")
 
-st.title("Uber Pickups in New York City")
+st.title("Uber Pickups in Bangkok City")
 st.markdown(
 """
 This is a demo of a Streamlit app that shows the Uber pickups
-geographical distribution in New York City. Use the slider
+geographical distribution in Bangkok City. Use the slider
 to pick a specific hour and look at how the charts change.
-[See source code](https://github.com/streamlit/demo-uber-nyc-pickups/blob/master/app.py)
 """)
 
 #นำเข้าข้อมุลเป็น dataframe
