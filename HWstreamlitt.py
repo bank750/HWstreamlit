@@ -29,7 +29,7 @@ def load_data(nb):
         ll = pd.read_csv('https://github.com/bank750/geodatasciencee/raw/master/2019010%i.csv' %(i+1) )
         data2.append(ll)
         data2[i] = data2[i].filter(regex='^(l|t)',axis=1)
-    data = pd.concat(data2,keys = ['day1','day2','day3','day4','day5'])
+    data = pd.concat(data2)
     data['timestart'] = pd.to_datetime(data.timestart,dayfirst=True )
     data['timestop'] = pd.to_datetime(data.timestop,dayfirst=True )
     return data
@@ -91,7 +91,7 @@ st.write(pdk.Deck(
             data=data,
             get_position=[lonn, latt],
             radius=100,
-            elevation_scale=4,
+            elevation_scale=10,
             elevation_range=[0, 1000],
             pickable=True,
             extruded=True,
@@ -119,4 +119,5 @@ st.altair_chart(alt.Chart(chart_data)
 ##ใช้streamlit สร้างcheckbox เพื่อเป็นทางเลือกในการขอดูข้อมูลใน dataframe
 if st.checkbox("Show raw data", False):
     st.subheader("Raw data by minute between %i:00 and %i:00" % (hour, hour1 % 24))
-    st.write(data)
+    st.write(data[[latt,lonn,DATE_TIME]])
+st.subheader('Total data = '+str(data[latt].count())+' rows')
